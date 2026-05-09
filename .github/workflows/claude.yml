@@ -40,14 +40,10 @@ jobs:
           additional_permissions: |
             actions: read
 
-          custom_instructions: |
-            The project is already set up with all dependencies installed.
-            The server is already running at localhost:3000. Logs from it are being written to logs.txt.
-            If needed you can query the db with 'sqlite3' cli. If needed, use the mcp_playwright set
-            of tools to launch a browser and interact with the app.
-
-          mcp_config: |
+          settings: |
             {
+              "customInstructions": "The project is already set up with all dependencies installed. The server is already running at localhost:3000. Logs from it are being written to logs.txt. If needed you can query the db with 'sqlite3' cli. If needed, use the mcp_playwright set of tools to launch a browser and interact with the app.",
+              "allowedTools": ["Bash(npm:*)", "Bash(sqlite3:*)", "mcp__playwright__browser_snapshot", "mcp__playwright__browser_click"],
               "mcpServers": {
                 "playwright": {
                   "command": "npx",
@@ -59,8 +55,6 @@ jobs:
                 }
               }
             }
-
-          allowed_tools: "Bash(npm:*),Bash(sqlite3:*),mcp__playwright__browser_snapshot,mcp__playwright__browser_click,..."
 
 
           # Optional: Give a custom prompt to Claude. If this is not specified, Claude will perform the instructions specified in the comment that tagged it.
